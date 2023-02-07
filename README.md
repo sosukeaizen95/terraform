@@ -1,10 +1,9 @@
 # terraform
 
-# Create EC2 Instance
-
 Create an EC2 instance with a Linux based OS that is accessible over the internet via SSH.
 
 ## Inputs
+
 The following inputs should be accepted:
 
 - **Region**: AWS region where the instance will be deployed
@@ -14,6 +13,7 @@ The following inputs should be accepted:
 - **VpcId**: ID of the VPC where the instance will be deployed
 
 ## Outputs
+
 The following outputs should be produced:
 
 - **InstanceId**: ID of the newly created instance
@@ -55,3 +55,8 @@ Outputs:
 InstanceId = xxxxx
 PublicIpAddress = x.x.x.x
 ```
+
+## What to Submit
+
+1. Create a new branch with the name: `<your_github_username>`.
+2. Submit a [PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) against the `main` branch.
