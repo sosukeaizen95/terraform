@@ -45,7 +45,7 @@ validate:
 	terraform validate
 
 ## plan 		: Run terraform plan.
-plan: clean fmt init validate
+plan:
 	terraform plan ${DEFAULT_ARGS} -out=${PLAN_FILEPATH}
 
 ## apply 		: Run terraform apply.
