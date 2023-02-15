@@ -26,10 +26,11 @@ jobs:
       - name: Checkout Forked Repo
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          repository: tarpanpathak/terraform
+          # ref: ${{ github.event.pull_request.head.ref }}
+          # repository: ${{ github.event.pull_request.head.repo.full_name }}
       
-      - name: Test
+      - name: Validate Forked Repo Contents
         run: ls -l .
     
       # - name: Configure AWS Credentials
