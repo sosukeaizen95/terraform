@@ -26,10 +26,8 @@ jobs:
       - name: Checkout Forked Repo
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
           ref: ${{ github.event.pull_request_target.head.ref }}
           repository: ${{ github.event.pull_request_target.head.repo.full_name }}
-          token: ${{ env.GH_PAT }}
       
       - name: Test
         run: ls -l .
