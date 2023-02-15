@@ -26,10 +26,9 @@ jobs:
       - name: Checkout Forked Repo
         uses: actions/checkout@v3
         with:
-          repository: tarpanpathak/terraform
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: tarpanpathak720@gmail.com
           # ref: ${{ github.event.pull_request.head.ref }}
-          # repository: ${{ github.event.pull_request.head.repo.full_name }}
       
       - name: Validate Forked Repo Contents
         run: ls -l .
