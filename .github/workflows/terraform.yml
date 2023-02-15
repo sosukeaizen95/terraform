@@ -28,73 +28,70 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-      
-      - name: Validate Forked Repo Contents
-        run: ls -l .
     
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: ${{ env.AWS_REGION }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
       
-      # - name: Check AWS Identity
-      #   run: aws sts get-caller-identity
+      - name: Check AWS Identity
+        run: aws sts get-caller-identity
       
-      # - name: Setup Terraform
-      #   uses: hashicorp/setup-terraform@v1
-      #   with:
-      #     terraform_version: 1.0.2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.2
       
-      # - name: Terraform Format
-      #   id: fmt
-      #   run: make fmt
+      - name: Terraform Format
+        id: fmt
+        run: make fmt
 
-      # - name: Terraform Init
-      #   id: init
-      #   run: make init
+      - name: Terraform Init
+        id: init
+        run: make init
       
-      # - name: Terraform Validate
-      #   id: validate
-      #   run: make validate
+      - name: Terraform Validate
+        id: validate
+        run: make validate
       
-      # - name: Terraform Plan
-      #   id: plan
-      #   if: github.event_name == 'pull_request_target'
-      #   run: make plan
-      #   continue-on-error: true
+      - name: Terraform Plan
+        id: plan
+        if: github.event_name == 'pull_request_target'
+        run: make plan
+        continue-on-error: true
       
-      # - name: Update Pull Request
-      #   uses: actions/github-script@v6
-      #   if: github.event_name == 'pull_request_target'
-      #   env:
-      #     PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
-      #   with:
-      #     github-token: ${{ secrets.GH_PAT }}
-      #     script: |
-      #       const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
-      #       #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
-      #       #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
-      #       #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
+      - name: Update Pull Request
+        uses: actions/github-script@v6
+        if: github.event_name == 'pull_request_target'
+        env:
+          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+        with:
+          github-token: ${{ secrets.GH_PAT }}
+          script: |
+            const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+            #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
+            #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+            #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
 
-      #       <details><summary>Show Plan</summary>
+            <details><summary>Show Plan</summary>
 
-      #       \`\`\`\n
-      #       ${process.env.PLAN}
-      #       \`\`\`
+            \`\`\`\n
+            ${process.env.PLAN}
+            \`\`\`
 
-      #       </details>
+            </details>
 
-      #       *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+            *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
 
-      #       github.rest.issues.createComment({
-      #         issue_number: context.issue.number,
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         body: output
-      #       })
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
       
-      # - name: Terraform Plan Status
-      #   if: steps.plan.outcome == 'failure'
-      #   run: exit 1
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        run: exit 1
