@@ -58,5 +58,6 @@ PublicIpAddress = x.x.x.x
 
 ## What to Submit
 
-1. Create a new branch with the name: `<your_github_username>`.
-2. Submit a [PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) against the `main` branch.
+1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) `main` in this repo to your own namespace.
+2. Create a new branch in your repo with the name: `<your_github_username>`.
+3. Submit a [PR](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) from your forked repo into the `main` branch of this repo.
