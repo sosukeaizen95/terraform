@@ -4,13 +4,15 @@ Create an EC2 instance with a Linux based OS that is accessible over the interne
 
 ## Inputs
 
-The following inputs should be accepted:
+To ensure the proper functioning of our GitHub action, please only utilize the specified variables mentioned below:
 
 - **Region**: AWS region where the instance will be deployed
 - **KeyName**: Name of the SSH key to be installed on the instance
 - **InstanceType**: EC2 instance type (i.e size of the instance)
 - **SubnetId**: ID of the subnet where the instance will be deployed
 - **VpcId**: ID of the VPC where the instance will be deployed
+
+Using any additional variables beyond the ones listed above may result in our GitHub action getting stuck in an unintended loop. Please adhere to the provided variables to avoid potential issues.
 
 ## Outputs
 
@@ -21,7 +23,7 @@ The following outputs should be produced:
 
 ## Test
 
-Use the following command/s to test your code. The [Makefile](./Makefile) can also be used to test.
+Before submitting your PR for review, please ensure that you have executed the following commands to test your code. It is important to run these commands to validate and ensure consistency in your Terraform configuration. You can also utilize the [Makefile](./Makefile) for testing purposes.
 
 ```sh
 # Reformat Terraform configuration to follow a consistent standard
@@ -55,6 +57,8 @@ Outputs:
 InstanceId = xxxxx
 PublicIpAddress = x.x.x.x
 ```
+
+Running these commands will help verify the correctness and formatting of your Terraform code. It is essential to complete these steps before raising the PR for review.
 
 ## What to Submit
 
