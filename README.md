@@ -19,7 +19,9 @@ The following outputs should be produced:
 - **InstanceId**: ID of the newly created instance
 - **PublicIpAddress**: publicly accessible ip address as an output
 
-## Example
+## Test
+
+Use the following command/s to test your code. The [Makefile](./Makefile) can also be used to test.
 
 ```sh
 # Reformat Terraform configuration to follow a consistent standard
@@ -47,8 +49,6 @@ $ terraform apply -auto-approve \
     -var instance_type=${AWS_INSTANCE_TYPE} \
     -var subnet_id=${AWS_SUBNET_ID} \
     -var vpc_id=${AWS_VPC_ID}
-
-...
 
 Outputs:
 
