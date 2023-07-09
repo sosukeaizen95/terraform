@@ -22,14 +22,14 @@ The following outputs should be produced:
 ## Example
 
 ```sh
+# Reformat Terraform configuration to follow a consistent standard
+$ terraform fmt -check=true -diff
+
 # Initialize the terraform working directory
 $ terraform init
 
 # Validate terraform
 $ terraform validate
-
-# Reformat Terraform configuration to follow a consistent standard
-$ terraform fmt -check=true -diff
 
 # Dry-run
 $ terraform plan \
