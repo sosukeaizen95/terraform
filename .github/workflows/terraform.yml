@@ -66,7 +66,7 @@ jobs:
         uses: actions/github-script@v6
         if: github.event_name == 'pull_request_target'
         env:
-          PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
+          PLAN: "${{ steps.plan.outputs.stdout }}"
         with:
           github-token: ${{ env.GH_PAT }}
           script: |
