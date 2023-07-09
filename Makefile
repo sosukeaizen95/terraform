@@ -46,7 +46,7 @@ validate:
 
 ## plan 		: Run terraform plan.
 plan:
-	terraform plan ${DEFAULT_ARGS} -out=${PLAN_FILEPATH}
+	terraform plan ${DEFAULT_ARGS} -out=${PLAN_FILEPATH} -no-color -input=false
 
 ## apply 		: Run terraform apply.
 apply:
